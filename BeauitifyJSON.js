@@ -105,7 +105,7 @@ function BeautifyJSON(jsonString, depthlevel,output)
                	 }
                	 else if( this.jsonString instanceof Object)
                	 {
-               	 	printObject(buffer,depth,this.output);
+               	 	printObject("",this.jsonString,buffer,depth,this.output);
                	 }
                	 var finalString = buffer.join("");
                	 return finalString;
@@ -123,6 +123,7 @@ function BeautifyJSON(jsonString, depthlevel,output)
              buffer.push("[\n");
              depth.value = depth.value + 1;
              var i=0;
+             var inloop = false;
              for( i=0;i<arr.length;i++)
              {
                  if(typeof arr[i] === 'number' || typeof arr[i] === 'string' || typeof arr[i] === 'boolean')
@@ -136,14 +137,67 @@ function BeautifyJSON(jsonString, depthlevel,output)
                  	printArray(i,arr[i],buffer,depth,output);
 
                  }
+                 else if( typeof arr[i] == 'object')
+                 {
+                 	printObject(i,arr[i],buffer,depth,output);
+                 }
                  buffer.push(" ,\n");
-
+                 inloop = true;
              }
-             buffer.pop();
+             if(inloop)
+             {
+                  buffer.pop();
+             }
              buffer.push("\n");
              depth.value = depth.value -1;
              printDepth(buffer,depth);
              buffer.push("]");
+
+
+        }
+
+        function printObject(key,obj,buffer,depth,output)
+        {
+        	 printDepth(buffer,depth);
+             if(!(typeof key == 'undefined' || key === ""))
+             {
+             	var str = key+" : ";
+             	buffer.push(str);
+             }
+
+             buffer.push("{\n");
+             depth.value = depth.value + 1;
+             var i=0;
+             var inloop=false;
+             for( var i in obj)
+             {
+                 if(typeof obj[i] === 'number' || typeof obj[i] === 'string' || typeof obj[i] === 'boolean')
+                 {
+                         printNumberString(i,obj[i],buffer,depth);
+                         
+                      
+                 }
+                 else if(typeof obj[i] == 'object' && obj[i] instanceof Array)
+                 {
+                 	printArray(i,obj[i],buffer,depth,output);
+
+                 }
+                 else if( typeof obj[i] == 'object')
+                 {
+                 	printObject(i,obj[i],buffer,depth,output);
+                 }
+                 buffer.push(" ,\n");
+                 inloop = true;
+
+             }
+             if(inloop)
+             {
+                 buffer.pop();
+             }
+             buffer.push("\n");
+             depth.value = depth.value -1;
+             printDepth(buffer,depth);
+             buffer.push("}");
 
 
         }
@@ -169,18 +223,3 @@ function BeautifyJSON(jsonString, depthlevel,output)
 
 }
 
-var data0 = '["vikram",1,"aditya","siva"]'
-
-var beautify0 = new BeautifyJSON(data0);
-
-var string0 = beautify0.getBeautify();
-
-console.log(string0);
-
-var data1 = [["vikramadity" , "battina"] , ["aditya","bhargava"],["kiran","kovi"],["siva" , "ram" , "prasad"],"yaswitha","swetha","subbarao","ramadevi"];
-
-var beautify1 = new BeautifyJSON(data1,4);
-
-var string1 = beautify1.getBeautify();
-
-console.log(string1);
