@@ -1,0 +1,52 @@
+#button
+{
+  text-align: center;
+}
+
+#beautify
+{
+   border: 1px solid #3F3F76;
+   margin: 0 auto;
+   border-radius : 4px;
+   padding-top : 10px ;
+   padding-left : 10px ;
+   padding-bottom :  10px ;
+   padding-right :  10px ;
+   background-color : #8A8AFF ;
+   color : #FFFFFF;
+ }
+
+.textarea
+{
+  text-align: center;
+}
+
+#inputtextdiv
+{
+  margin-top : 20px ;
+}
+
+#outputtextdiv
+{
+  margin-top : 20px;
+}
+
+
+#inputtext
+{
+  border : 3px solid #CCCCCC;
+}
+
+#outputtext
+{
+  border : 3px solid #CCCCCC;
+}
+
+.paratext
+{
+   font-family: Arial, Helvetica, sans-serif;
+   color : #993333;
+   background-color : #E0C2C2;
+   padding : 10px;
+   border-radius : 5px;
+}

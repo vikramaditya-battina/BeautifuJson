@@ -1,0 +1,29 @@
+<html>
+  <head>
+     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+     <script src="jquery-1.11.1.js" type="text/javascript"> </script>
+     <script src="BeauitifyJSON.js" type="text/javascript"> </script>
+     <script src="controller.js" type="text/javascript"> </script>
+
+  </head>
+  <body>
+     <div id="button">
+     	<button type="button" id="beautify">BEAUTify It...</button>
+     </div>
+     
+     <div id="container">
+      
+          <div class = "textarea" id="inputtextdiv">
+                 <p><span class="paratext"> INPUT TEXT </span> </p>
+     	           <textarea rows="20" cols="130" id="inputtext" placeholder="placeText Here"></textarea>
+          </div>
+          <div class = "textarea" id="outputtextdiv">
+                 <p> <span class="paratext"> OUTPUT TEXT </span></p>
+     	           <textarea rows="50" cols="130" id="outputtext" placeholder="output willbe here"></textarea>
+          </div>
+     </div>
+     
+
+  
+  </body>
+</html>
