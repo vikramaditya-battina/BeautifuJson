@@ -1,4 +1,4 @@
-Constants = { "depthlevel": 2 ,"output":true };
+Constants = { "depthlevel": 4 ,"output":true };
 function BeautifyJSON(jsonString, depthlevel,output)
 {
 	
